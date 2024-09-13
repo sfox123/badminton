@@ -3,9 +3,9 @@ import { Team, Match } from "../app/types";
 import wfp from "@/img/wfp.png";
 import unops from "@/img/unops.svg";
 import unicef from "@/img/unicef.svg";
-import undp from "@/img/undp.png";
+import undp from "@/img/UNDP.png";
 import unfpa from "@/img/unfpa.png";
-import iom from "@/img/iom.svg";
+import iom from "@/img/IOM.svg";
 
 export const teams: Team[] = [
   {
