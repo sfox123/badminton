@@ -2,8 +2,14 @@
 
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
-import { Decal, Float, Preload, useTexture, OrbitControls } from "@react-three/drei";
-import { useSpring, animated } from "@react-spring/three";
+import {
+  Decal,
+  Float,
+  Preload,
+  useTexture,
+  OrbitControls,
+} from "@react-three/drei";
+import { animated } from "@react-spring/three";
 
 interface BallProps {
   imgUrl: string;
@@ -11,26 +17,6 @@ interface BallProps {
 
 const Ball: React.FC<BallProps> = ({ imgUrl }) => {
   const [deCal] = useTexture([imgUrl]);
-
-  // Define the spring animation logic
-  const { scaleX, scaleY } = useSpring({
-    loop: true,
-    from: {
-      scaleX: 1.1,
-      scaleY: 0.9,
-    },
-    to: async (next) => {
-      await next({
-        scaleX: 1,
-        scaleY: 1,
-      });
-      await next({
-        scaleX: 1.05,
-        scaleY: 0.95,
-      });
-    },
-    config: { duration: 2000 },
-  });
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>

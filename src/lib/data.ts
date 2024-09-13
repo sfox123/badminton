@@ -6,7 +6,6 @@ import unicef from "@/img/unicef.svg";
 import undp from "@/img/undp.png";
 import unfpa from "@/img/unfpa.png";
 import iom from "@/img/iom.svg";
-import adb from "@/img/adb.svg";
 
 export const teams: Team[] = [
   {
