@@ -1,10 +1,12 @@
-'use client';
+"use client";
 import { match } from "@/lib/data";
-import { IconArrowForward } from '@tabler/icons-react';
+import { IconArrowForward } from "@tabler/icons-react";
 import { useRouter, notFound } from "next/navigation";
 import TeamDisplay from "@/components/ui/TeamDisplay";
-import { useSelector } from 'react-redux';
-import { RootState } from '@/lib/store';
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
+import { db } from "@/lib/firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 
 interface Params {
   propName: string;
@@ -24,8 +26,17 @@ const DynamicPage = ({ params }: { params: Params }) => {
     return null; // Ensure the component returns null if notFound is called
   }
 
-  const handleNextClick = () => {
-    console.log('Team State:', teamState);
+  const handleNextClick = async () => {
+    console.log("Team State:", teamState);
+
+    // Save the team state to Firebase
+    try {
+      await setDoc(doc(db, "teams", "teamState"), teamState);
+      console.log("Document successfully written!");
+    } catch (error) {
+      console.error("Error writing wtf document: ", error);
+    }
+
     router.push("/page-2");
   };
 
@@ -56,8 +67,8 @@ const DynamicPage = ({ params }: { params: Params }) => {
           onClick={handleNextClick}
           className={`px-6 py-3 rounded-full flex items-center shadow-lg transition-all duration-200 ${
             isNextButtonDisabled
-              ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-              : 'bg-gray-800 text-white hover:bg-gray-700 hover:shadow-xl active:bg-gray-600 active:shadow-md'
+              ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+              : "bg-gray-800 text-white hover:bg-gray-700 hover:shadow-xl active:bg-gray-600 active:shadow-md"
           }`}
           disabled={isNextButtonDisabled}
         >

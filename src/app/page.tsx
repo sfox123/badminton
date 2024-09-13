@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { buttonData } from "../lib/data";
-import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card"; // Ensure correct import
+import Card from "@/components/ui/Card";
 
 export default function Home() {
   const router = useRouter();
@@ -13,10 +12,14 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen">
-      <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+    <main className="flex flex-col justify-center items-center h-screen p-4">
+      <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 w-full max-w-4xl">
         {buttonData.map((button) => (
-          <div onClick={() => handleButtonClick(button.name)} key={button.name}>
+          <div
+            onClick={() => handleButtonClick(button.name)}
+            key={button.name}
+            className="w-full md:w-auto"
+          >
             <Card
               name={button.name}
               Icon={button.icon}
