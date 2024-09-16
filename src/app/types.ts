@@ -9,3 +9,13 @@ export interface Match {
   values: number[];
   playerCount: number;
 }
+
+export interface Player {
+  firstName: string;
+  lastName: string;
+}
+
+export interface Umpire {
+  name: string;
+  pin: string;
+}

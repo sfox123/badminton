@@ -6,7 +6,7 @@ import TeamDisplay from "@/components/ui/TeamDisplay";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { db } from "@/lib/firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 interface Params {
   propName: string;
@@ -31,13 +31,13 @@ const DynamicPage = ({ params }: { params: Params }) => {
 
     // Save the team state to Firebase
     try {
-      await setDoc(doc(db, "teams", "teamState"), teamState);
+      await addDoc(collection(db, "teamState"), teamState);
       console.log("Document successfully written!");
     } catch (error) {
       console.error("Error writing wtf document: ", error);
     }
 
-    router.push("/page-2");
+    router.push("/match_fix");
   };
 
   const isNextButtonDisabled = teamState.teamA === teamState.teamB;

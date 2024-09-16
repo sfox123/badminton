@@ -1,11 +1,13 @@
 import { IconUser, IconSettings, IconEye } from "@tabler/icons-react";
-import { Team, Match } from "../app/types";
+import { Team, Match, Umpire } from "../app/types";
 import wfp from "@/img/wfp.png";
 import unops from "@/img/unops.svg";
 import unicef from "@/img/unicef.svg";
 import undp from "@/img/UNDP.png";
 import unfpa from "@/img/unfpa.png";
 import iom from "@/img/IOM.svg";
+import adb from "@/img/adb.png";
+import un from "@/img/un.png";
 
 export const teams: Team[] = [
   {
@@ -41,12 +43,12 @@ export const teams: Team[] = [
   {
     name: "ADB",
     team: ["Team A"],
-    logo: "images/adb.svg",
+    logo: `${adb.src}`,
   },
   {
     name: "RCO FAO DSS",
     team: ["Team A"],
-    logo: "images/rco.svg",
+    logo: `${un.src}`,
   },
 ];
 
@@ -76,11 +78,6 @@ export const match: Match[] = [
     values: [1, 2],
     playerCount: 2,
   },
-  {
-    name: "MX",
-    values: [1, 2, 3],
-    playerCount: 2,
-  },
 ];
 
 export const buttonData = [
@@ -104,5 +101,24 @@ export const buttonData = [
     before: "https://i.ibb.co/zSDZwnB/crowd.jpg",
     after:
       "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG5qYmRnYW5seGxuaWd6eWk0NDJ5cWNzNTNvZ2dwempocTlxeTE1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FxCOdhlvEQXbeH6/giphy.gif",
+  },
+];
+
+export const UmpireData: Umpire[] = [
+  {
+    name: "UMPIRE 1",
+    pin: "1234",
+  },
+  {
+    name: "UMPIRE 2",
+    pin: "2222",
+  },
+  {
+    name: "UMPIRE 3",
+    pin: "3333",
+  },
+  {
+    name: "UMPIRE 4",
+    pin: "4444",
   },
 ];

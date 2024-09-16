@@ -49,6 +49,11 @@ body {
   color: white;
 }
 
+.custom-select-option {
+  background-color: #000;
+  color: #fff;
+}
+
 .cool-dropdown::after {
   content: "▼";
   font-size: 0.75rem;
