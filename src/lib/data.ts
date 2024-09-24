@@ -1,11 +1,11 @@
 import { IconUser, IconSettings, IconEye } from "@tabler/icons-react";
 import { Team, Match, Umpire } from "../app/types";
 import wfp from "@/img/wfp.png";
-import unops from "@/img/unops.svg";
-import unicef from "@/img/unicef.svg";
-import undp from "@/img/UNDP.png";
+import unops from "@/img/unops.png";
+import unicef from "@/img/unicef.png";
+import undp from "@/img/undp.png";
 import unfpa from "@/img/unfpa.png";
-import iom from "@/img/IOM.svg";
+import iom from "@/img/iom.png";
 import adb from "@/img/adb.png";
 import un from "@/img/un.png";
 

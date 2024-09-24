@@ -1,8 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "@/lib/store";
 
 interface Player {
   firstName: string;
   lastName: string;
+}
+
+interface RoundScore {
+  teamA: number;
+  teamB: number;
+}
+
+interface MatchStats {
+  startTime: string;
+  date: string;
+  scores: RoundScore[]; // Array of objects for each round
+  currentRound: number;
+  winner: string | null;
 }
 
 interface TeamState {
@@ -14,7 +28,21 @@ interface TeamState {
   teamAPlayers: Player[];
   teamBPlayers: Player[];
   selectedUmpire: string;
+  active: boolean;
+  matchStats: MatchStats[];
 }
+
+const initialMatchStats: MatchStats = {
+  startTime: "",
+  date: new Date().toISOString(),
+  scores: [
+    { teamA: 0, teamB: 0 }, // Round 1
+    { teamA: 0, teamB: 0 }, // Round 2
+    { teamA: 0, teamB: 0 }, // Round 3
+  ],
+  currentRound: 0,
+  winner: null,
+};
 
 const initialState: TeamState = {
   teamA: "",
@@ -25,6 +53,8 @@ const initialState: TeamState = {
   teamAPlayers: [],
   teamBPlayers: [],
   selectedUmpire: "",
+  active: true,
+  matchStats: [initialMatchStats], // Initialize with default match stats
 };
 
 const teamSlice = createSlice({
@@ -63,6 +93,15 @@ const teamSlice = createSlice({
     setSelectedUmpire: (state, action: PayloadAction<string>) => {
       state.selectedUmpire = action.payload;
     },
+    resetState: (state) => {
+      Object.assign(state, initialState);
+    },
+    setActive: (state, action: PayloadAction<boolean>) => {
+      state.active = action.payload;
+    },
+    addMatchStats: (state, action: PayloadAction<MatchStats>) => {
+      state.matchStats.push(action.payload);
+    },
   },
 });
 
@@ -75,5 +114,23 @@ export const {
   removePlayerFromTeamA,
   removePlayerFromTeamB,
   setSelectedUmpire,
+  resetState,
+  setActive,
+  addMatchStats,
 } = teamSlice.actions;
+
+export const isMatchFixButtonVisible = (state: RootState) => {
+  const teamState = state.team;
+  return (
+    teamState.teamA &&
+    teamState.teamA_Group &&
+    teamState.teamB &&
+    teamState.teamB_Group &&
+    teamState.matchType &&
+    teamState.teamAPlayers.length > 0 &&
+    teamState.teamBPlayers.length > 0 &&
+    teamState.selectedUmpire
+  );
+};
+
 export default teamSlice.reducer;

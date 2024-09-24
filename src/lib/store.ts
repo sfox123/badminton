@@ -1,12 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import animationReducer from './feature/animationSlice';
-import teamReducer from './feature/teamSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import animationReducer from "./feature/animationSlice";
+import teamReducer from "./feature/teamSlice";
+import matchReducer from "./feature/matchSlice";
 
 const store = configureStore({
   reducer: {
     animation: animationReducer,
     team: teamReducer,
-
+    match: matchReducer,
   },
 });
 
