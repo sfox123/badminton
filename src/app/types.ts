@@ -26,6 +26,7 @@ export type Score = {
 };
 
 export type MatchLive = {
+  id: string;
   scores: Score[];
   currentRound: number;
   selectedUmpire: string;
