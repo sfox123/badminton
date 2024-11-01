@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { IconPlus, IconMinus } from "@tabler/icons-react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { db } from "@/lib/firebaseConfig";
 import Loading from "@/components/ui/Loading";
 
@@ -11,9 +9,7 @@ export default function Page() {
   const [match, setMatch] = useState<any>(null);
   const [teamA, setTeamA] = useState<string>("");
   const [teamB, setTeamB] = useState<string>("");
-  const [showRoundTransition, setShowRoundTransition] =
-    useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true); // Add loading state
+  const [loading, setLoading] = useState<boolean>(true);
   const matchId =
     typeof window !== "undefined"
       ? new URL(window.location.href).pathname.split("/score/")[1]
@@ -40,7 +36,7 @@ export default function Page() {
       } catch (error) {
         console.error("Error fetching match data:", error);
       } finally {
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       }
     };
 
@@ -65,16 +61,6 @@ export default function Page() {
       );
     }
 
-    // Check if the round is complete
-    if (
-      newScores[currentRound].teamA >= 21 ||
-      newScores[currentRound].teamB >= 21
-    ) {
-      match.currentRound += 1;
-      setShowRoundTransition(true);
-      setTimeout(() => setShowRoundTransition(false), 2000);
-    }
-
     const updatedMatch = {
       ...match,
       scores: newScores,
@@ -89,48 +75,24 @@ export default function Page() {
     }
   };
 
+  const handleRoundButtonClick = () => {
+    console.log("Clicked");
+  };
+
   if (loading) {
-    return <Loading />; // Render the Loading component while loading
+    return <Loading />;
   }
 
   if (!match || !match.scores || match.currentRound === undefined) {
     return <div>Error: Match data is not available.</div>;
   }
 
+  const isRoundComplete =
+    match.scores[match.currentRound]?.teamA >= 21 ||
+    match.scores[match.currentRound]?.teamB >= 21;
+
   return (
     <div className="relative flex flex-col h-screen">
-      <AnimatePresence>
-        {showRoundTransition && (
-          <motion.div
-            className="absolute inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {match.currentRound < 3 ? (
-              <motion.h1
-                className="text-white text-4xl"
-                initial={{ scale: 0.5 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.5 }}
-              >
-                Round {match.currentRound + 1}
-              </motion.h1>
-            ) : (
-              <Link href="/Umpire">
-                <motion.button
-                  className="bg-white text-black p-4 rounded-full"
-                  initial={{ scale: 0.5 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0.5 }}
-                >
-                  End
-                </motion.button>
-              </Link>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
       <div className="flex flex-col justify-center items-center flex-1 bg-red-500">
         <h2>{teamA}</h2>
         <div className="flex items-center space-x-4 mt-5">
@@ -152,7 +114,17 @@ export default function Page() {
         </div>
       </div>
       <div className="text-black font-bold text-center p-2 bg-gray-300">
-        <h1>Round {match.currentRound + 1}</h1>
+        <h1>
+          Round {match.currentRound + 1}
+          {isRoundComplete && (
+            <button
+              className="ml-4 bg-blue-500 text-white p-2 rounded"
+              onClick={handleRoundButtonClick}
+            >
+              Next Round
+            </button>
+          )}
+        </h1>
       </div>
       <div className="flex flex-col justify-center items-center flex-1 bg-blue-500">
         <h2>{teamB}</h2>

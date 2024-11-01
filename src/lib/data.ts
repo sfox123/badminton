@@ -12,42 +12,42 @@ import un from "@/img/un.png";
 export const teams: Team[] = [
   {
     name: "UNOPS",
-    team: ["Team A", "Team B"],
+    team: ["Team 1", "Team 2"],
     logo: `${unops.src}`,
   },
   {
     name: "WHO UNICEF",
-    team: ["Team A"],
+    team: ["Team 1"],
     logo: `${unicef.src}`,
   },
   {
     name: "UNDP",
-    team: ["Team A", "Team B"],
+    team: ["Team 1", "Team 2"],
     logo: `${undp.src}`,
   },
   {
     name: "UNFPA",
-    team: ["Team A"],
+    team: ["Team 1"],
     logo: `${unfpa.src}`,
   },
   {
     name: "IOM",
-    team: ["Team A", "Team B"],
+    team: ["Team 1", "Team 2"],
     logo: `${iom.src}`,
   },
   {
     name: "WFP",
-    team: ["Team A", "Team B"],
+    team: ["Team 1", "Team 2"],
     logo: `${wfp.src}`,
   },
   {
     name: "ADB",
-    team: ["Team A"],
+    team: ["Team 1"],
     logo: `${adb.src}`,
   },
   {
     name: "RCO FAO DSS",
-    team: ["Team A"],
+    team: ["Team 1"],
     logo: `${un.src}`,
   },
 ];
