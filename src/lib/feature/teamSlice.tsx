@@ -2,8 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/lib/store";
 
 interface Player {
-  firstName: string;
-  lastName: string;
+  FullName: string;
 }
 
 interface RoundScore {

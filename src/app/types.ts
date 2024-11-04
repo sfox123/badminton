@@ -1,9 +1,3 @@
-export interface Team {
-  name: string;
-  team: Array<string>;
-  logo: string;
-}
-
 export interface Match {
   name: string;
   values: number[];
@@ -11,10 +5,21 @@ export interface Match {
 }
 
 export interface Player {
-  firstName: string;
-  lastName: string;
+  FullName: string;
+  gender?: string;
 }
 
+export interface TeamDetail {
+  teamName: string;
+  malePlayers: Player[];
+  femalePlayers: Player[];
+}
+
+export interface Team {
+  name: string;
+  logo: string;
+  teams: TeamDetail[];
+}
 export interface Umpire {
   name: string;
   pin: string;

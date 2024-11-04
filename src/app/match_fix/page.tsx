@@ -71,11 +71,13 @@ const MatchFix = () => {
           teamId="teamA"
           matchType={teamState.matchType}
           teamName={teamState.teamA}
+          teamGroup={teamState.teamA_Group}
         />
         <PlayerForm
           teamId="teamB"
           matchType={teamState.matchType}
           teamName={teamState.teamB}
+          teamGroup={teamState.teamB_Group}
         />
       </div>
       <div className="mt-6">

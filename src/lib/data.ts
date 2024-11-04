@@ -1,5 +1,9 @@
 import { IconUser, IconSettings, IconEye } from "@tabler/icons-react";
 import { Team, Match, Umpire } from "../app/types";
+
+import umpire from "@/img/umpire.jpg";
+import ops from "@/img/ops.jpg";
+
 import wfp from "@/img/wfp.png";
 import unops from "@/img/unops.png";
 import unicef from "@/img/unicef.png";
@@ -12,43 +16,246 @@ import un from "@/img/un.png";
 export const teams: Team[] = [
   {
     name: "UNOPS",
-    team: ["Team 1", "Team 2"],
     logo: `${unops.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "Chamith B Fernando" },
+          { FullName: "Charles Callanan" },
+          { FullName: "Doloswala Thiyambarawatte Toshan Mahesh" },
+          { FullName: "Eranga Perera" },
+          { FullName: "Himath Weraduwa" },
+          { FullName: "Jaime Alarma Olmos" },
+        ],
+        femalePlayers: [
+          { FullName: "Amenthi Tarika Jasinghe" },
+          { FullName: "Edirisinghe Mudiyanselage Sithmi Nimashi" },
+          { FullName: "Yasodhara Kariyawasam" },
+          { FullName: "Amarasingha Pathirannehelage Don Rashmi" },
+          { FullName: "Sakunthala Kumari Amarasingha" },
+        ],
+      },
+      {
+        teamName: "Team 2",
+        malePlayers: [
+          { FullName: "Priyanga W. Jayasekara" },
+          { FullName: "R.H.M.Imasha Bhagya Lakshmiwewa" },
+          { FullName: "Richerd Amos Rajaratnam" },
+          { FullName: "Sivalingam Sivashankar" },
+          { FullName: "Sivananthavadivel Sivashangar" },
+          { FullName: "Thushan Duminda Jayaratne" },
+        ],
+        femalePlayers: [
+          { FullName: "Vijayapala Sinnathamby" },
+          { FullName: "Yasasi Gayara Rathnabarana" },
+          { FullName: "Subashini Kaneshwaren" },
+          { FullName: "Gamage Anjalee Pitadeniya" },
+          { FullName: "Kalyani Sivanathan" },
+          { FullName: "Sripalee Ayanthi De Silva Gardiya Manawaduge" },
+          { FullName: "Eunhye Cathy Lee" },
+        ],
+      },
+    ],
   },
   {
     name: "WHO UNICEF",
-    team: ["Team 1"],
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "Sapumal Dhanapala" },
+          { FullName: "Sameera Hewage" },
+          { FullName: "Noyal Rajkumar" },
+          { FullName: "Ranjan Suriyabandara" },
+          { FullName: "Naleen De Silva" },
+          { FullName: "Shane Ferdinands" },
+          { FullName: "Sanjeewa Warusawitharana" },
+          { FullName: "Abner Daniel" },
+        ],
+        femalePlayers: [
+          { FullName: "Geethani Dissanayake" },
+          { FullName: "Kumudini Ragel" },
+          { FullName: "Iresha Peiris" },
+          { FullName: "Shashini Kulanayake " },
+          { FullName: "Mithuni Jayawardana" },
+        ],
+      },
+    ],
     logo: `${unicef.src}`,
   },
   {
     name: "UNDP",
-    team: ["Team 1", "Team 2"],
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "Kasun Jayathilake" },
+          { FullName: "Ravindu Jayasundara" },
+          { FullName: "Sachithra Jayasundara" },
+          { FullName: "Tharindu Jayasundara" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+        ],
+        femalePlayers: [
+          { FullName: "Kasuni Jayathilake" },
+          { FullName: "Ravindi Jayasundara" },
+          { FullName: "Sachithri Jayasundara" },
+          { FullName: "Tharindi Jayasundara" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+        ],
+      },
+      {
+        teamName: "Team 2",
+        malePlayers: [
+          { FullName: "Kasun Jayathilake" },
+          { FullName: "Ravindu Jayasundara" },
+          { FullName: "Sachithra Jayasundara" },
+          { FullName: "Tharindu Jayasundara" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+          { FullName: "Tharindu Jayathilake" },
+        ],
+        femalePlayers: [
+          { FullName: "Kasuni Jayathilake" },
+          { FullName: "Ravindi Jayasundara" },
+          { FullName: "Sachithri Jayasundara" },
+          { FullName: "Tharindi Jayasundara" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+          { FullName: "Tharindi Jayathilake" },
+        ],
+      },
+    ],
     logo: `${undp.src}`,
   },
   {
     name: "UNFPA",
-    team: ["Team 1"],
     logo: `${unfpa.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "John Doe" },
+          { FullName: "Michael Smith" },
+          { FullName: "Robert Johnson" },
+        ],
+        femalePlayers: [
+          { FullName: "Emily Davis" },
+          { FullName: "Jessica Garcia" },
+          { FullName: "Sarah Miller" },
+        ],
+      },
+    ],
   },
   {
     name: "IOM",
-    team: ["Team 1", "Team 2"],
     logo: `${iom.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "William Brown" },
+          { FullName: "David Jones" },
+          { FullName: "Richard Wilson" },
+        ],
+        femalePlayers: [
+          { FullName: "Ashley Taylor" },
+          { FullName: "Stephanie Anderson" },
+          { FullName: "Laura Thomas" },
+        ],
+      },
+      {
+        teamName: "Team 2",
+        malePlayers: [
+          { FullName: "Charles Moore" },
+          { FullName: "Joseph Martin" },
+          { FullName: "Thomas Lee" },
+        ],
+        femalePlayers: [
+          { FullName: "Karen Perez" },
+          { FullName: "Nancy Thompson" },
+          { FullName: "Betty White" },
+        ],
+      },
+    ],
   },
   {
     name: "WFP",
-    team: ["Team 1", "Team 2"],
     logo: `${wfp.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "Christopher Harris" },
+          { FullName: "Daniel Clark" },
+          { FullName: "Matthew Lewis" },
+        ],
+        femalePlayers: [
+          { FullName: "Michelle Robinson" },
+          { FullName: "Amanda Walker" },
+          { FullName: "Melissa Hall" },
+        ],
+      },
+      {
+        teamName: "Team 2",
+        malePlayers: [
+          { FullName: "Anthony Allen" },
+          { FullName: "Mark Young" },
+          { FullName: "Steven Hernandez" },
+        ],
+        femalePlayers: [
+          { FullName: "Kimberly King" },
+          { FullName: "Donna Wright" },
+          { FullName: "Carol Lopez" },
+        ],
+      },
+    ],
   },
   {
     name: "ADB",
-    team: ["Team 1"],
     logo: `${adb.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "Paul Hill" },
+          { FullName: "Kevin Scott" },
+          { FullName: "Brian Green" },
+        ],
+        femalePlayers: [
+          { FullName: "Sandra Adams" },
+          { FullName: "Jennifer Baker" },
+          { FullName: "Lisa Gonzalez" },
+        ],
+      },
+    ],
   },
   {
     name: "RCO FAO DSS",
-    team: ["Team 1"],
     logo: `${un.src}`,
+    teams: [
+      {
+        teamName: "Team 1",
+        malePlayers: [
+          { FullName: "George Nelson" },
+          { FullName: "Edward Carter" },
+          { FullName: "Ronald Mitchell" },
+        ],
+        femalePlayers: [
+          { FullName: "Susan Perez" },
+          { FullName: "Deborah Roberts" },
+          { FullName: "Jessica Turner" },
+        ],
+      },
+    ],
   },
 ];
 
@@ -84,16 +291,14 @@ export const buttonData = [
   {
     name: "UMPIRE",
     icon: IconUser,
-    before: "https://i.ibb.co/QXRTqh7/shuttle.jpg",
-    after:
-      "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTRtOHAwYWFnczEwMmxuMXJ4M3Vha2dsb2xnZzQ4bzQ3Mmpxc3QyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JI5Na0rpieV8bSuKgO/giphy.gif",
+    before: `${umpire.src}`,
+    after: `${umpire.src}`,
   },
   {
     name: "OPERATOR",
     icon: IconSettings,
-    before: "https://i.ibb.co/W59YC9G/console.jpg",
-    after:
-      "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xiemw0OG8xdXgzdTRjN2RwazBjejM1cWoyd2pmb2c5ZGk5ZXo2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNLx3dUqFgVi86I/giphy.gif",
+    before: `${ops.src}`,
+    after: `${ops.src}`,
   },
   {
     name: "AUDIENCE",

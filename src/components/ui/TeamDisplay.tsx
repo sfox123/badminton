@@ -20,9 +20,7 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
   const [teamIndex, setTeamIndex] = useState(initialTeamIndex);
 
   const [selectedSubTeam, setSelectedSubTeam] = useState(
-    Array.isArray(teams[initialTeamIndex].team)
-      ? teams[initialTeamIndex].team[0]
-      : teams[initialTeamIndex].team
+    teams[teamIndex].teams[0]?.teamName || ""
   );
 
   const dispatch = useDispatch();
@@ -39,19 +37,15 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
   const handlePrev = () => {
     const newIndex = teamIndex === 0 ? teams.length - 1 : teamIndex - 1;
     setTeamIndex(newIndex);
-    const newSubTeam = Array.isArray(teams[newIndex].team)
-      ? teams[newIndex].team[0]
-      : teams[newIndex].team;
-    setSelectedSubTeam(newSubTeam);
+    const newSubTeamName = teams[newIndex].teams[0]?.teamName || "";
+    setSelectedSubTeam(newSubTeamName);
   };
 
   const handleNext = () => {
     const newIndex = teamIndex === teams.length - 1 ? 0 : teamIndex + 1;
     setTeamIndex(newIndex);
-    const newSubTeam = Array.isArray(teams[newIndex].team)
-      ? teams[newIndex].team[0]
-      : teams[newIndex].team;
-    setSelectedSubTeam(newSubTeam);
+    const newSubTeamName = teams[newIndex].teams[0]?.teamName || "";
+    setSelectedSubTeam(newSubTeamName);
   };
 
   const handleSubTeamChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -80,37 +74,40 @@ const TeamDisplay: React.FC<TeamDisplayProps> = ({
       <div className="flex flex-col items-center mt-4">
         <div className="text-white text-lg mb-2">{teams[teamIndex].name}</div>
         <div className="flex items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
+          {/* Updated arrow buttons */}
+          <div
+            onClick={handlePrev}
+            className="p-3 cursor-pointer hover:bg-gray-700 rounded-full"
           >
-            <IconArrowLeft onClick={handlePrev} className="cursor-pointer" />
-            <div className="mx-4 text-white">
-              {Array.isArray(teams[teamIndex].team) ? (
-                <select
-                  value={selectedSubTeam}
-                  onChange={handleSubTeamChange}
-                  className="cool-dropdown bg-transparent border border-white rounded p-2"
-                >
-                  {teams[teamIndex].team.map((team, index) => (
-                    <option
-                      key={index}
-                      value={team}
-                      className="bg-dark text-white"
-                    >
-                      {team}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <span>{teams[teamIndex].team}</span>
-              )}
-            </div>
-            <IconArrowRight onClick={handleNext} className="cursor-pointer" />
-          </motion.div>
+            <IconArrowLeft size={32} />
+          </div>
+          <div className="mx-4 text-white">
+            {teams[teamIndex].teams.length > 1 ? (
+              <select
+                value={selectedSubTeam}
+                onChange={handleSubTeamChange}
+                className="cool-dropdown bg-transparent border border-white rounded p-2"
+              >
+                {teams[teamIndex].teams.map((teamDetail, index) => (
+                  <option
+                    key={index}
+                    value={teamDetail.teamName}
+                    className="bg-dark text-white"
+                  >
+                    {teamDetail.teamName}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span>{teams[teamIndex].teams[0].teamName}</span>
+            )}
+          </div>
+          <div
+            onClick={handleNext}
+            className="p-3 cursor-pointer hover:bg-gray-700 rounded-full"
+          >
+            <IconArrowRight size={32} />
+          </div>
         </div>
       </div>
     </div>
